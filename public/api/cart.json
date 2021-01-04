@@ -1,0 +1,9 @@
+{
+  "goods": [
+    {"id": 0, "name": "商品0", "price": 65},
+    {"id": 1, "name": "商品1", "price": 85},
+    {"id": 2, "name": "商品2", "price": 7},
+    {"id": 3, "name": "商品3", "price": 40},
+    {"id": 4, "name": "商品4", "price": 54}
+  ]
+}

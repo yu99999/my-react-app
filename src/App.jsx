@@ -1,7 +1,7 @@
 import React from 'react'
 import {GlobalStyle} from './style'
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Redirect

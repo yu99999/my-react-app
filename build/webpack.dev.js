@@ -7,11 +7,11 @@ const webpack = require('webpack');
 const path = require('path')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
-const {dllManifestPath} = require('./paths')
+const {dllManifestPath, publicPath} = require('./paths')
 
 const devConfig = {
   mode: 'development',
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 9999,
     hot: true,
@@ -30,7 +30,8 @@ const devConfig = {
       manifest: dllManifestPath
     }),
     new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, '../dll/vendors.dll.js')
+      filepath: path.resolve(__dirname, '../dll/vendors.dll.js'),
+      publicPath
     })
   ],
   performance: false,

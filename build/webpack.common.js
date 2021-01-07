@@ -11,7 +11,9 @@ const {
   entryPath,
   outputPath,
   appHtml,
-  alias
+  faviconPath,
+  alias,
+  publicPath
 } = require('./paths')
 
 const getStyleLoader = (loader) => {
@@ -19,6 +21,7 @@ const getStyleLoader = (loader) => {
     isEnvProduction 
     ? MiniCssExtractPlugin.loader
     : 'style-loader',
+    // "cache-loader",       // 根据自己需要是否开启缓存css
     {
       loader: 'css-loader',
       options: {
@@ -42,17 +45,20 @@ module.exports = {
   entry: entryPath,
   output: {
     path: outputPath,
-    filename: isEnvProduction ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js'
+    filename: isEnvProduction ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js',
+    publicPath
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: appHtml,
-      filename: 'index.html'
+      filename: 'index.html',
+      favicon: faviconPath,
+      publicPath
     }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../public'),   // 将 public 目录下的文件都复制到打包文件夹中
-        ignore: ['index.html']
+        ignore: ['index.html', 'favicon.ico']
       }
     ])
   ],
